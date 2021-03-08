@@ -40,7 +40,7 @@ def monitor_path(folderpath):
                     elif type_names[0] == 'IN_DELETE_SELF':
                         print(f"{path}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "d", textcol.RESET)
                     elif type_names[0] == 'IN_DELETE' and type_names[1] == 'IN_ISDIR':
-                        print(f"{path}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "d", textcol.RESET)
+                        print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "d", textcol.RESET)
 
 
 
