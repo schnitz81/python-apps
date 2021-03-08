@@ -30,18 +30,19 @@ def monitor_path(folderpath):
 
                 # FOLDER
 
-                if len(type_names) == 2:
+                # monitored folder deleted
+                if type_names[0] == 'IN_DELETE_SELF' and len(type_names) == 1:
+                    print(f"{path}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "*d*", textcol.RESET)
+
+                elif len(type_names) == 2:
 
                     # created folder
                     if type_names[0] == 'IN_CREATE' and type_names[1] == 'IN_ISDIR':
                         print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "d", textcol.GREEN, "c", textcol.RESET)
 
                     # deleted folder
-                    elif type_names[0] == 'IN_DELETE_SELF':
-                        print(f"{path}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "d", textcol.RESET)
                     elif type_names[0] == 'IN_DELETE' and type_names[1] == 'IN_ISDIR':
                         print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "d", textcol.RESET)
-
 
 
                 # FILE
