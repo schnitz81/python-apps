@@ -30,11 +30,7 @@ def monitor_path(folderpath):
 
                 # FOLDER
 
-                # monitored folder deleted
-                if type_names[0] == 'IN_DELETE_SELF' and len(type_names) == 1:
-                    print(f"{path}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "*d*", textcol.RESET)
-
-                elif len(type_names) == 2:
+                if len(type_names) == 2:
 
                     # created folder
                     if type_names[0] == 'IN_CREATE' and type_names[1] == 'IN_ISDIR':
@@ -43,6 +39,10 @@ def monitor_path(folderpath):
                     # deleted folder
                     elif type_names[0] == 'IN_DELETE' and type_names[1] == 'IN_ISDIR':
                         print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "d", textcol.RED, "d", textcol.RESET)
+
+                    # renamed/moved folder
+                    elif type_names[0] == 'IN_MOVED_TO' and type_names[1] == 'IN_ISDIR':
+                        print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "d", textcol.LIGHTYELLOW_EX, "mv", textcol.RESET)
 
 
                 # FILE
@@ -57,9 +57,13 @@ def monitor_path(folderpath):
                     elif type_names[0] == 'IN_DELETE':
                         print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "f", textcol.RED, "d", textcol.RESET)
 
+                    # renamed/moved file
+                    elif type_names[0] == 'IN_MOVED_TO':
+                        print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "f", textcol.LIGHTYELLOW_EX, "mv", textcol.RESET)
+
                 #  verbose info, uncomment to see all changes
-                #print("PATH=[{}] FILENAME=[{}] EVENT_TYPES={}".format(
-                #    path, filename, type_names))
+                print("PATH=[{}] FILENAME=[{}] EVENT_TYPES={}".format(
+                    path, filename, type_names))
 
         except inotify.calls.InotifyError as ne:
             print(f"err: {ne}")
