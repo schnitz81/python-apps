@@ -62,8 +62,8 @@ def monitor_path(folderpath):
                         print(f"{path}/{filename}", textcol.LIGHTBLACK_EX, "f", textcol.LIGHTYELLOW_EX, "mv", textcol.RESET)
 
                 #  verbose info, uncomment to see all changes
-                print("PATH=[{}] FILENAME=[{}] EVENT_TYPES={}".format(
-                    path, filename, type_names))
+                #print("PATH=[{}] FILENAME=[{}] EVENT_TYPES={}".format(
+                #    path, filename, type_names))
 
         except inotify.calls.InotifyError as ne:
             print(f"err: {ne}")
