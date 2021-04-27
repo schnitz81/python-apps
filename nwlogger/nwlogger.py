@@ -3,7 +3,7 @@ import socket
 import datetime
 import time
 
-LOGFILE="/tmp/nwlogger.log"
+LOGFILE="/var/log/nwlogger.log"
 STATUSTABLE = {}
 INTERVAL = 2
 
