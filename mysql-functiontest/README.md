@@ -1,4 +1,4 @@
-# mysql-tester
+# mysql-functiontest
 Automatically test accessibility and function of a mysql database.
 
 ## Usage
