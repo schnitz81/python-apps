@@ -116,17 +116,16 @@ def main():
     drop_database(dbcursor)
     db.commit()
 
-    # exit with return code
-    if verified:
-        sys.exit(0)
-    else:
-        sys.exit(1)
-
     # close connection
     print("Closing connection.")
     dbcursor.close()
     db.close()
 
+    # exit with return code
+    if verified:
+        sys.exit(0)
+    else:
+        sys.exit(1)
 
 if __name__ == '__main__':
     main()
