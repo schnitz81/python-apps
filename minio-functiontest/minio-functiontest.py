@@ -82,7 +82,7 @@ def main():
     print("\nChecking alias existence.")
     cmdoutput = execute(f"./mc alias list {ALIASNAME} | xargs")
     if ALIASNAME not in cmdoutput:
-        print("FAILED: alias not created. Check port and connectivity.")
+        print("FAILED: alias not created. Check login, port and connectivity.")
         sys.exit(1)
 
     # create bucket
